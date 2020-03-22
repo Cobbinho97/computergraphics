@@ -29,6 +29,23 @@ light.castShadow = true;
 light.shadow.camera.near = 10;       
 light.shadow.camera.far = 45;    
 
+light1 = new THREE.DirectionalLight(0xffffff, 0.2, 120);
+light1.position.set(0,100,0);
+light1.castShadow = true;
+light1.shadow.camera.near = 40;
+light1.shadow.camera. far = 100;
+scene.add(light1);
+//Skybox
+var path = "Skybox/";
+var format = '.jpg';
+var urls = [
+path + 'cloudtop_bk' + format, path + 'cloudtop_ft' + format,
+path + 'cloudtop_up' + format, path + 'cloudtop_dn' + format,
+path + 'cloudtop_lf' + format, path + 'cloudtop_rt' + format
+];
+var dayCubeTexture = new THREE.CubeTextureLoader().load( urls );
+dayCubeTexture.format = THREE.RGBFormat;
+scene.background = dayCubeTexture;
 //Meshes
 
 //Walls
@@ -260,40 +277,40 @@ lights2.position.x = -30.0;
 lights2.castShadow = true;
 
 //Pool Table
-var g14 = new THREE.BoxGeometry(2, 12, 2);
+var g14 = new THREE.BoxGeometry(2, 11, 2);
 var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/bar.png")});
 var tableleg1 = new THREE.Mesh( g14, m14 );
 tableleg1.position.y = 4.0;
 tableleg1.position.z = -5.0;
-tableleg1.position.x = -30.0;
+tableleg1.position.x = -29.0;
 tableleg1.castShadow = true;
 
-var g14 = new THREE.BoxGeometry(2, 12, 2);
+var g14 = new THREE.BoxGeometry(2, 11, 2);
 var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/bar.png")});
 var tableleg2 = new THREE.Mesh( g14, m14 );
 tableleg2.position.y = 4.0;
 tableleg2.position.z = -5.0;
-tableleg2.position.x = 0.0;
+tableleg2.position.x = -1.0;
 tableleg2.castShadow = true;
 
-var g14 = new THREE.BoxGeometry(2, 12, 2);
+var g14 = new THREE.BoxGeometry(2, 11, 2);
 var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/bar.png")});
 var tableleg3 = new THREE.Mesh( g14, m14 );
 tableleg3.position.y = 4.0;
 tableleg3.position.z = 10.0;
-tableleg3.position.x = -30.0;
+tableleg3.position.x = -29.0;
 tableleg3.castShadow = true;
 
-var g14 = new THREE.BoxGeometry(2, 12, 2);
+var g14 = new THREE.BoxGeometry(2, 11, 2);
 var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/bar.png")});
 var tableleg4 = new THREE.Mesh( g14, m14 );
 tableleg4.position.y = 4.0;
 tableleg4.position.z = 10.0;
-tableleg4.position.x = 0.0;
+tableleg4.position.x = -1.0;
 tableleg4.castShadow = true;
 
-var g14 = new THREE.BoxGeometry(35, 2, 17);
-var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/pool.png")});
+var g14 = new THREE.BoxGeometry(36, 2, 18);
+var m14 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/bar.png")});
 var tabletop = new THREE.Mesh( g14, m14 );
 tabletop.position.y = 9.0;
 tabletop.position.z = 2.5;
@@ -366,6 +383,14 @@ meshgrate.position.z = 30.0;
 meshgrate.recieveShadow = true;
 meshgrate.castShadow = true;
 
+var g27 = new THREE.BoxGeometry(36, 0.2, 18);
+var m25 = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load("textures/pool.png")});
+var topofpool = new THREE.Mesh(g27, m25);
+topofpool.position.y = 10.0;
+topofpool.position.z = 2.5;
+topofpool.position.x = -15.0;
+topofpool.recieveShadow = true;
+
 // Add
 scene.add(wall);
 scene.add(wall1);
@@ -404,6 +429,7 @@ scene.add(boxingstand);
 scene.add(boxingconnect);
 scene.add(boxingtop);
 scene.add(boxingbag);
+scene.add(topofpool);
 
 // The animate function: called every frame
 var iFrame = 0;
