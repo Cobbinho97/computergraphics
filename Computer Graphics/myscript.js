@@ -34,6 +34,13 @@ light.shadow.mapSize.height = 512; // default
 light.shadow.camera.near = 0.5;       // default
 light.shadow.camera.far = 500      // default
 
+light1 = new THREE.DirectionalLight(0xffffff, 0.2, 120);
+light1.position.set(0,100,0);
+light1.castShadow = true;
+light1.shadow.camera.near = 40;
+light1.shadow.camera. far = 100;
+scene.add(light1);
+
 //Skybox
 var path = "Skybox/";
 var format = '.jpg';
